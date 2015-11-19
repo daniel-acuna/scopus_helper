@@ -23,3 +23,8 @@ profile = sh.get_profile('8868165800')
 # Author
 
 - Daniel E. Acuna
+
+# License
+
+![CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+[Creative Commons 4.0 Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)
