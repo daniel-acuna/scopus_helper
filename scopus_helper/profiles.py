@@ -2,8 +2,8 @@
 
 import requests
 
-from api_cycler import ElsevierApiKeyCycler, ApiKeyException
-from restful_api_helpers import clean_string
+from .api_cycler import ElsevierApiKeyCycler, ApiKeyException
+from .restful_api_helpers import clean_string
 
 
 __all__ = ['search_profiles',

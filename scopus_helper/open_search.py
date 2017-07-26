@@ -1,6 +1,6 @@
 """Implements a simple opensearch function"""
 
-from api_cycler import ElsevierApiKeyCycler, ApiKeyException
+from .api_cycler import ElsevierApiKeyCycler, ApiKeyException
 import requests
 
 

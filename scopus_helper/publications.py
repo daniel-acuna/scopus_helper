@@ -2,8 +2,8 @@
 
 import requests
 
-from api_cycler import ElsevierApiKeyCycler, ApiKeyException
-from open_search import open_search
+from .api_cycler import ElsevierApiKeyCycler, ApiKeyException
+from .open_search import open_search
 
 
 __all__ = ['get_publications',
