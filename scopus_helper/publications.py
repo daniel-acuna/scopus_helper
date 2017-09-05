@@ -9,6 +9,7 @@ from .open_search import open_search
 __all__ = ['get_publications',
            'get_citation_matrix',
            'get_citations',
+           'get_abstract'
            ]
 
 
@@ -67,6 +68,17 @@ def get_citations(doi, per_page=25, api_key=None):
             raise ApiKeyException(e.message, json_response=citation_res)
 
     return [initial_citation_res, citations]
+
+
+@ElsevierApiKeyCycler
+def get_abstract(eid: str, api_key=None):
+    results = requests.get('http://api.elsevier.com/content/abstract/eid/{}'.format(eid),
+                 headers={'Accept': 'application/json', 'X-ELS-APIKey': api_key})
+
+    if results.status_code != 200:
+        raise ApiKeyException(str(results.status_code), results.json())
+    else:
+        return results.json()
 
 
 if __name__ == '__main__':

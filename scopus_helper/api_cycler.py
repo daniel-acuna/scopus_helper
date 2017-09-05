@@ -32,11 +32,11 @@ class ElsevierApiKeyCycler(object):
         initial_idx = ElsevierApiKeyCycler.key_idx
         while True:
             try:
-                return self.f(*args, api_key=ElsevierApiKeyCycler.key_list[ElsevierApiKeyCycler.key_idx],
-                              **kwargs)
+                return self.f(*args, api_key=ElsevierApiKeyCycler.key_list[ElsevierApiKeyCycler.key_idx], **kwargs)
             except ApiKeyException as e:
                 # Examine Elsevier's API response
                 # TODO: Check if the reponse indicates that we ran out of keys
+                print("API exhausted")
                 if 'service-error' in e.json_response and \
                         (e.json_response['service-error']['status']['statusCode'] == 'QUOTA_EXCEEDED' or
                          e.json_response['service-error']['status']['statusCode'] == 'AUTHORIZATION_ERROR'):
@@ -48,4 +48,4 @@ class ElsevierApiKeyCycler(object):
                         # whole rotation done, throw error
                         raise Exception("No API keys left")
                 else:
-                    raise Exception('Unkonwn API message: %s' % str(e.json_response))
+                    raise Exception('Unknown API message: %s' % str(e.json_response))
